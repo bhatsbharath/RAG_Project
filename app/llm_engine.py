@@ -1,7 +1,4 @@
-"""LLM Engine - loads model and generates text
-
-Uses HuggingFace transformers library for inference.
-"""
+import os
 from transformers import pipeline
 import torch
 
