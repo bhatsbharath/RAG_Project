@@ -63,11 +63,13 @@ class LLMEngine:
 
     def _get_model_family(self) -> str:
         """Figure out what model family this is"""
-        name = self.model_name.lower()
+        name = os.path.basename(self.model_name).lower()
         if "llama" in name:
             return "Llama"
         elif "mistral" in name:
             return "Mistral"
+        elif "tinyllama" in name:
+            return "TinyLlama"
         elif "zephyr" in name:
             return "Zephyr"
         else:
