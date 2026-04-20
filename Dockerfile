@@ -24,7 +24,7 @@ COPY app/ ./app/
 COPY data/ ./data/
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8000 8080
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
