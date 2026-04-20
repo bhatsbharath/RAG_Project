@@ -14,7 +14,7 @@ st.write("Ask questions about your documents using semantic search + LLM")
 # Sidebar configuration
 with st.sidebar:
     st.header("Settings")
-    api_url = st.text_input("API URL", value="http://localhost:8000")
+    api_url = st.text_input("API URL", value="http://localhost:8080")
     num_sources = st.slider("Top sources to retrieve", 1, 5, 3)
 
 # Main area
