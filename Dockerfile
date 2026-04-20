@@ -16,6 +16,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY main.py .
+COPY ui.py
+COPY start.sh .
 COPY app/ ./app/
 
 # Copy data
@@ -29,4 +31,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python -c "import requests; requests.get('http://localhost:8000/health')" || exit 1
 
 # Run application
-CMD ["python", "main.py"]
+RUN chmod +x start.sh
+CMD ["bash","start.sh"]
