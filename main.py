@@ -58,7 +58,23 @@ def startup_event():
 
     # Step 3: Initialize LLM
     print("[Step 3] Loading language model...")
-    llm_engine = LLMEngine(model_name="HuggingFaceH4/zephyr-7b-beta")
+    models_dir = "models"
+    local_models = []
+    if os.path.exists(models_dir):
+        local_models = [
+            os.path.join(models_dir, d)
+            for d in sorted(os.listdir(models_dir))
+            if os.path.isdir(os.path.join(models_dir, d))
+        ]
+
+    if local_models:
+        model_path = local_models[0]
+        print(f"         Using local model: {model_path}")
+    else:
+        model_path = "HuggingFaceH4/zephyr-7b-beta"
+        print(f"         No local model found in {models_dir}/, downloading: {model_path}")
+
+    llm_engine = LLMEngine(model_name=model_path)
 
     print("\n" + "=" * 60)
     print("RAG Service is ready!")
